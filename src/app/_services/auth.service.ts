@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
 import{HttpClient,HttpHeaders} from '@angular/common/http'
-const AUTH_API = 'http://localhost:8080/api/auth/login';
-const AUTH_API2 = 'http://localhost:8080/api/auth/registerUser';
+const AUTH_API = 'http://localhost:8081/api/auth/login';
+const AUTH_API2 = 'http://localhost:8081/api/auth/registerUser';
 
 @Injectable({
   providedIn: 'root'
