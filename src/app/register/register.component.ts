@@ -10,7 +10,9 @@ export class RegisterComponent {
   form: any = {
     username: null,
     email: null,
-    password: null
+    password: null,
+    firstName:null,
+    lastName:null
   };
   isSuccessful = false;
   isSignUpFailed = false;

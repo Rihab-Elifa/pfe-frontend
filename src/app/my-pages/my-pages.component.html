@@ -1,0 +1,21 @@
+<div>
+    <div class=" container-fluid  red col-md-6">
+        <h4> List Pages</h4>
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let tutorial of pages">
+            {{ tutorial.title }} <div class="container">
+              {{tutorial.id}}
+              <button class="btn  btn-block " ><a routerLink="detailP/{{tutorial.id}}">
+                Details</a>
+              </button>
+              <img [src]="'data:image/jpeg;base64,'+tutorial.imageProfile.bytes" [alt]="tutorial.title" matListAvatar></div>
+            <button class="btn  btn-block " (click)="remove(tutorial.id)">
+              Delete Page
+            </button>
+          </li>
+        </ul>
+    </div>
+</div>
+<router-outlet></router-outlet>
