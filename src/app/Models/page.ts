@@ -1,4 +1,6 @@
+import { Activity } from "./Activity";
 import { Produit } from "./Produit";
+import { Region } from "./Region";
 
 export class page{
 
@@ -6,11 +8,11 @@ export class page{
     title!: string;
     address!: string;
     email!: string;
-    city!: string;
     phone!: number;
-    activity!:string;
+    activity!:Activity;
     postalCode!: number;
-    p!: Produit[];
+    region!:Region;
+   
     //imageProfile!: File;
     //imageCouverture!: File;
 }

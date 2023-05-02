@@ -4,7 +4,7 @@
         les pages
       </mat-card-title>
     </mat-card-title-group>
-    <mat-spinner text-danger *ngIf="loading$ | async"></mat-spinner>
+    <mat-spinner  *ngIf="loading$ | async"></mat-spinner>
     <mat-nav-list *ngIf="vendors$ | async as vendors">
       <a *ngFor="let page of vendors" mat-list-item [routerLink]="page.id.toString()">
              <!--<img [src]="page.imageProfile" [alt]="page.title" matListAvatar>-->

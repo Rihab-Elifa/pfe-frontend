@@ -3,6 +3,7 @@ import { VendorServicesService } from '../_services/vendor-services.service';
 import { page2 } from '../Models/page2';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Article } from '../Models/Article';
 
 @Component({
   selector: 'app-details-page',
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailsPageComponent implements OnInit {
  
-  
+  article?:Article[];
   page2!:page2;
   
   constructor(private vendorServ:VendorServicesService,private route:ActivatedRoute){}
@@ -26,11 +27,19 @@ export class DetailsPageComponent implements OnInit {
       },
       error: (e) => console.error(e)
     });
+    this.vendorServ.getAllArticleByPage(id).subscribe({
+      next: (data) => {
+       this.article=data;
+       console.log(data);
+
+      },
+      error: (e) => console.error(e)
+    });
+  } 
     
   }
   //how get detail page image +data angular 15?
 
-  
+ 
 
 
-}

@@ -38,9 +38,12 @@ export class MyPagesComponent implements OnInit {
 
   }
   remove(idPage:string):void{
-    this.vendorServ.deletePage(idPage,this.idUser);
-
-
+    this.vendorServ.deletePage(this.idUser,idPage).subscribe(() => {
+      // code à exécuter après la suppression de la page
+    });
   }
+
+
+  
 
 }

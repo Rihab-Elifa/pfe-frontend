@@ -16,6 +16,10 @@ import { DetailsPageComponent } from './details-page/details-page.component';
 import { AddProduitComponent } from './add-produit/add-produit.component';
 import { UpdatePageComponent } from './update-page/update-page.component';
 import { MapsComponent } from './maps/maps.component';
+import { ProfileVendorComponent } from './profile-vendor/profile-vendor.component';
+import { UpdateArticleComponent } from './update-article/update-article.component';
+import { AllArticleComponent } from './all-article/all-article.component';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 
 
 const routes: Routes = [{path:'register',component:RegisterComponent},
@@ -28,15 +32,31 @@ const routes: Routes = [{path:'register',component:RegisterComponent},
 {path:'profile',component:ProfileComponent, children:[
   {path:'update/:id',component:UpdateUserComponent},
   {path:'vendor',component:VendreComponent},
-  {path:'myPage/:id',component:MyPagesComponent,children:[
-    {path:'detailP/:id',component:DetailsPageComponent}
-
-  ]},
   
   {path:'addP',component:AddProduitComponent},
-  {path:'UpdatePage/:id',component:UpdatePageComponent}
+  {path:'UpdatePage/:id',component:UpdatePageComponent},
+  
   
 ]},
+
+{path:'profile/profile-vendor',component:ProfileVendorComponent,children:[
+  
+
+  {path:'myPage/:id',component:MyPagesComponent},
+  {path:'myPage/:id/detailP/:id',component:DetailsPageComponent},
+  {path:'vendor',component:VendreComponent},
+  {path:'Update/:id',component:UpdatePageComponent},
+  {path:'addP',component:AddProduitComponent},
+  {path:'UpdateArticle',component:UpdateArticleComponent},
+  {path:'ListeArticle',component:AllArticleComponent},
+  {path:'ListeArticle/DetailArt/:id',component:ArticleDetailComponent}
+  
+ 
+
+]},
+
+
+ 
 
 
 {path:'maps',component:MapsComponent},

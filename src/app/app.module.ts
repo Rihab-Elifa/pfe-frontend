@@ -32,12 +32,18 @@ import { DetailsPageComponent } from './details-page/details-page.component';
 import { AddProduitComponent } from './add-produit/add-produit.component';
 import { UpdatePageComponent } from './update-page/update-page.component';
 import { MapsComponent } from './maps/maps.component';
-import { GoogleMapsModule } from '@angular/google-maps'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { ProfileVendorComponent } from './profile-vendor/profile-vendor.component';
+import { UpdateArticleComponent } from './update-article/update-article.component';
+
+import { AllArticleComponent } from './all-article/all-article.component';
+import { ArticleDetailComponent } from './article-detail/article-detail.component'
 
 
 
 @NgModule({
   declarations: [
+  
     AppComponent,
     LoginComponent,
     RegisterComponent,
@@ -53,7 +59,11 @@ import { GoogleMapsModule } from '@angular/google-maps'
     DetailsPageComponent,
     AddProduitComponent,
     UpdatePageComponent,
-    MapsComponent
+    MapsComponent,
+    ProfileVendorComponent,
+    UpdateArticleComponent,
+    AllArticleComponent,
+    ArticleDetailComponent
   ],
   imports: [
     BrowserModule,

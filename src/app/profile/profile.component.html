@@ -23,13 +23,16 @@
 <button class="btn  btn-block btn2" ><a routerLink="update/{{user.id}}">
   EditUser</a>
 </button>
-<button class="btn  btn-block " ><a routerLink="myPage/{{user.id}}">
+<button  class="btn  btn-danger" ><a  routerLink="vendor">
+
+  Create Page</a>
+</button>
+
+<button class="btn  btn-block " ><a routerLink="profile-vendor">
   MyPages</a>
 </button>
 
-<button class="btn  btn-block " (click)="detail()">
-  DetailsPage
-</button>
+
 </div>
 <div class="container">
  <router-outlet></router-outlet>

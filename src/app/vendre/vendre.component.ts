@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { page } from '../Models/page';
 import { VendorServicesService } from '../_services/vendor-services.service';
+import { Activity } from '../Models/Activity';
+import { Region } from '../Models/Region';
 
 @Component({
   selector: 'app-vendre',
@@ -10,18 +12,18 @@ import { VendorServicesService } from '../_services/vendor-services.service';
 })
 export class VendreComponent {
   id!: string;
-
+  listeAct: Activity[] = [Activity.BEAUTE,Activity.ELECTROMENAGER,Activity.ELECTRONIQUES,Activity.MODE,Activity.PATISSERIE,Activity.RESTAURANTS,Activity.RESTAURANTS,Activity.SPORTS,Activity.SUPERETTE];
+  listRegion=Object.values(Region);
+  listeAct2 = Object.values(Activity);
   @Input() page:page={
     id: '',
     title: '',
     address: '',
     email: '',
-    city: '',
     phone: 0,
+    activity: Activity.RESTAURANTS,
     postalCode: 0,
-    p: [],
-    activity: ''
-    
+    region: Region.Ariana
   }
   imageProfile!: File;
   imageCouverture!: File;
@@ -41,5 +43,8 @@ export class VendreComponent {
   onCouvertureImageSelected(event: any): void {
     this.imageCouverture = event.target.files[0];
   }
+
+
+
 
 }

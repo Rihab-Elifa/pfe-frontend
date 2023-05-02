@@ -4,6 +4,10 @@ import { Categorie } from '../Models/Categorie';
 
 import { VendorServicesService } from '../_services/vendor-services.service';
 import { CategorieService } from '../_services/categorie.service';
+import { Article } from '../Models/Article';
+import { page2 } from '../Models/page2';
+
+import { Article2 } from '../Models/Article2';
 
 @Component({
   selector: 'app-add-produit',
@@ -11,15 +15,16 @@ import { CategorieService } from '../_services/categorie.service';
   styleUrls: ['./add-produit.component.scss']
 })
 export class AddProduitComponent implements OnInit {
-  categorie?:Categorie[];
+ 
   id!:string;
-  @Input() produit:Produit={
+  @Input() article:Article2={
     id: '',
-    name: '',
+    nom: '',
     description: '',
     prix: 0,
-    stock: 0,
-    c: new Categorie
+    nbstock: 0,
+  
+  
   }
   image!:File;
   constructor(private vendorServ:VendorServicesService,private categoryService:CategorieService){}
@@ -27,7 +32,7 @@ export class AddProduitComponent implements OnInit {
     this.categoryService.getAll()
       .subscribe({
         next: (data) => {
-          this.categorie= data;
+         
           console.log(data);
         },
         error: (e) => console.error(e)
@@ -35,7 +40,7 @@ export class AddProduitComponent implements OnInit {
   }
 
   ajouterProduit(): void {
-    this.vendorServ.ajouterProduit(this.id, this.produit,this.image)
+    this.vendorServ.ajouterProduit(this.id, this.article,this.image)
       .subscribe(resp => {
         
         

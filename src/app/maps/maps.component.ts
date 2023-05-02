@@ -33,13 +33,20 @@ export class MapsComponent implements OnInit {
       };
       console.log(this.center.lat);
       console.log(this.center.lng);
+      //sauvagrde position de user dans local storage
+      //localStorage.setItem("Position", JSON.stringify({ lat: this.center.lat, lng: this.center.lng }));
 
 
 
 
     });
-
-
+    var marker = new google.maps.Marker({
+      position: this.center,
+      title:"Hello World!"
+  });
+  
+  // To add the marker to the map, call setMap();
+ 
 
 
   }

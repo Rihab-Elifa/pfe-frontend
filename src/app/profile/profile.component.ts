@@ -6,6 +6,8 @@ import { user } from '../Models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 import { EmailValidator } from '@angular/forms';
+import { VendorServicesService } from '../_services/vendor-services.service';
+import { page2 } from '../Models/page2';
  
 @Component({
   selector: 'app-profile',
@@ -13,15 +15,16 @@ import { EmailValidator } from '@angular/forms';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit  {
+  pages!:page2[];
   @Input()  users!:user[];
   
   user!:user;
   email!:string;
   subString!:string;
   router: any;
- 
+   t!:Number;
   firstPageId!:string;
-  constructor(private userServ:UserServiceService,private authser:AuthService, private route:ActivatedRoute,private rout:Router){}
+  constructor(private userServ:UserServiceService,private vendorServ:VendorServicesService ,private authser:AuthService, private route:ActivatedRoute,private rout:Router){}
   
 
   ngOnInit(): void {
@@ -65,7 +68,17 @@ export class ProfileComponent implements OnInit  {
     });
     
     console.log(this.user.ppg[0].id);
-    
+    //liste des pages 
+    this.vendorServ.getAllP(this.user.id).subscribe({
+      next: (rep) => {
+        this.pages=rep;
+        console.log(rep);
+       
+      },
+      error: (e) => console.error(e)
+    });
+    this.t=this.pages.length;
+    console.log(this.t);
   //});
   }
   
@@ -89,11 +102,9 @@ export class ProfileComponent implements OnInit  {
   
 
   }
-  detail():void{
-    this.rout.navigate(['detailP/${d}']);
-
-  }
+ 
 
 
 }
+
 

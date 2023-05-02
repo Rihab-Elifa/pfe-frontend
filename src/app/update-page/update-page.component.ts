@@ -3,6 +3,10 @@ import { page } from '../Models/page';
 import { UserServiceService } from '../_services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VendorServicesService } from '../_services/vendor-services.service';
+import { Region } from '../Models/Region';
+import { Activity } from '../Models/Activity';
+import { page2 } from '../Models/page2';
+import { File } from '../Models/File';
 
 @Component({
   selector: 'app-update-page',
@@ -10,38 +14,32 @@ import { VendorServicesService } from '../_services/vendor-services.service';
   styleUrls: ['./update-page.component.scss']
 })
 export class UpdatePageComponent  implements OnInit{
-  @Input() page:page={
-    id: '',
-    title: '',
-    address: '',
-    email: '',
-    city: '',
-    phone: 0,
-    activity: '',
-    postalCode: 0,
-    p: []
-  }
-  id:any;
+  @Input() page:any;
+   id!:string|null;
+ 
   constructor(private vendorSer: VendorServicesService,
     private route: ActivatedRoute,
     private router: Router) { }
-
+   
   ngOnInit(): void {
+    this.id=this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
+
     
+    
+   
+    
+  }
     
   
-  }
+  
 
-  updatePage():void{
-   
-   
-    let id=this.route.snapshot.paramMap.get('id');
-    console.log(id);
-    this.vendorSer.updatePage(id,this.page)
+  updatePage():void{ 
+    this.vendorSer.updatePage(this.id,this.page)
     .subscribe({
       next: (data) => {
         
-          console.log('User updated successfully:', data);
+          console.log('page updated successfully:', data);
         },
         error:(e)=>console.error(e)
       }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit2 } from '../Models/Produit2';
 import { VendorServicesService } from '../_services/vendor-services.service';
+import { Article } from '../Models/Article';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,12 @@ import { VendorServicesService } from '../_services/vendor-services.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent  implements OnInit{
-  produit?:Produit2[];
+  article?:Article[];
   constructor(private vendorServ:VendorServicesService){}
   ngOnInit(): void {
-    this.vendorServ.getProduit().subscribe({
+    this.vendorServ.getAllArticle().subscribe({
       next:(data)=>{
-         this.produit=data;
+         this.article=data;
          console.log(data);
         
       }
