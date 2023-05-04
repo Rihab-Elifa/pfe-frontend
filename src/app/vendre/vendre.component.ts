@@ -11,19 +11,29 @@ import { Region } from '../Models/Region';
   styleUrls: ['./vendre.component.scss']
 })
 export class VendreComponent {
+  items!:any[];
+  addItem(newItem: any) {
+    this.items.push(newItem);
+  }
+
+  showlocation=false
   id!: string;
-  listeAct: Activity[] = [Activity.BEAUTE,Activity.ELECTROMENAGER,Activity.ELECTRONIQUES,Activity.MODE,Activity.PATISSERIE,Activity.RESTAURANTS,Activity.RESTAURANTS,Activity.SPORTS,Activity.SUPERETTE];
-  listRegion=Object.values(Region);
+  listeAct= Activity
+  listRegion= Region;
+   
   listeAct2 = Object.values(Activity);
+  activity:any
   @Input() page:page={
     id: '',
     title: '',
     address: '',
     email: '',
     phone: 0,
-    activity: Activity.RESTAURANTS,
+    activity: Activity[2],
     postalCode: 0,
-    region: Region.Ariana
+    region: Region[3],
+    longitude: 0,
+    latitude: 0
   }
   imageProfile!: File;
   imageCouverture!: File;
@@ -45,6 +55,29 @@ export class VendreComponent {
   }
 
 
+changeActivity(){
+  console.log(this.page.activity)
+if(this.page.activity==="PATISSERIE"||"FOOD"||"MAGAZIN")
+{this.showlocation=true}else{
+this.showlocation=false
+
+}
+
+
+}
+consoleValues(){
+  if (this.items!=null){
+    console.log(this.items);
+  
+  }
+}
+
+showOutput(val:any){
+  this.page.latitude=val.lat;
+  this.page.longitude=val.lng;
+  console.log("lang lat",val.lat)
+ 
+}
 
 
 }

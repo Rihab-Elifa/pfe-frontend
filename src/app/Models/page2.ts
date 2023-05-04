@@ -12,9 +12,9 @@ export class page2{
     email!: string;
     city!: string;
     phone!: number;
-    activity!:Activity;
+    activity!:string;
     postalCode!: number;
-    region!:Region;
+    region!:string;
     imageProfile!:File;
     imageCouverture!:File;
 }

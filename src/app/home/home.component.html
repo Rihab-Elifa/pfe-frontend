@@ -40,6 +40,26 @@
     
       </div>
  </section>
+<!--Liste des produit Local-->
+<div >
+<h2 >Liste des produits local</h2>
+
+</div>
+<section class="class">
+  <div class="card" style="width: 18rem;" *ngFor="let p of  Local">
+    <img [src]="'data:image/jpeg;base64,'+p.image.bytes">
+    <div class="card-body">
+      <p>Name:{{p.nom}}</p>
+      <p>Pix:{{p.prix}}</p>
+      
+     
+     
+      <a href="#" class="btn btn-danger"  routerLink="detailP/{{p.id}}">Go somewhere</a>
+    </div>
+  </div>
+   
+</section>
+
  <!--List des produits-->
  <h2>Liste du produit</h2>
 

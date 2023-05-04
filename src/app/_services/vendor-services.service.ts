@@ -24,6 +24,7 @@ export class VendorServicesService {
   private apiUrl8= 'http://localhost:8085/article/getarticle';
   private apiUrl9= 'http://localhost:8085/article/ListeArticle';
   private apiUrl10= 'http://localhost:8085/article/findArticlesByPage';
+  private apiUrl11= 'http://localhost:8085/article/articlesLocal';
 
   
   
@@ -142,6 +143,11 @@ getAllArticleByPage(id:string|null): Observable<Article[]> {
   return this.http.get<Article[]>(`${this.apiUrl10}/${id}`);
 }
 
+//get local article 
+getLocal(activity:any,lal:Number,lng:Number):Observable<any>{
+  //const options = { body: activity };
+  return this.http.get<Article[]>(`${this.apiUrl11}/${lal}/${lng}`,activity );
+}
 
 
 

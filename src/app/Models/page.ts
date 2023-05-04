@@ -9,9 +9,11 @@ export class page{
     address!: string;
     email!: string;
     phone!: number;
-    activity!:Activity;
+    activity!:string;
     postalCode!: number;
-    region!:Region;
+    region!:string;
+     longitude!:number;
+     latitude!:number;
    
     //imageProfile!: File;
     //imageCouverture!: File;

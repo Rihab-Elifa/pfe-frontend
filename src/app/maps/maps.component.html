@@ -6,6 +6,11 @@
             [zoom]="zoom"
             (mapClick)="moveMap($event)"
             (mapMousemove)="move($event)">
+            <map-marker [position]="markeur.position"></map-marker>
+            <map-marker *ngFor="let m of markers" [position]="m.position"></map-marker>
+
+
+<map-info-window></map-info-window>
             
 </google-map>
   

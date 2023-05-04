@@ -1,10 +1,10 @@
-export enum Activity {
-  RESTAURANTS,
-  MODE,
-  BEAUTE,
-  ELECTRONIQUES,
-  ELECTROMENAGER,
-  SUPERETTE,
-  SPORTS,
-  PATISSERIE,
-}
+export const  Activity  =[  "RESTAURANTS",
+  "MODE",
+  "BEAUTE",
+  "FOOD",
+  "MAGAZIN",
+  "ELECTRONIQUES",
+  "ELECTROMENAGER",
+  "SUPERETTE",
+  "SPORTS",
+  "PATISSERIE"]
