@@ -22,8 +22,7 @@ import { SocialComponent } from './social/social.component';
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import {
   GoogleLoginProvider,
-  FacebookLoginProvider
-} from '@abacritt/angularx-social-login';
+  FacebookLoginProvider} from '@abacritt/angularx-social-login';
 import { HomeComponent } from './home/home.component';
 import { StorageModule } from '@ngx-pwa/local-storage';
 import { TokenInterceptor } from './_helpers/token.interceptor';
@@ -37,7 +36,9 @@ import { ProfileVendorComponent } from './profile-vendor/profile-vendor.componen
 import { UpdateArticleComponent } from './update-article/update-article.component';
 
 import { AllArticleComponent } from './all-article/all-article.component';
-import { ArticleDetailComponent } from './article-detail/article-detail.component'
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
+import { CartComponent } from './cart/cart.component';
+import { CommanderComponent } from './commander/commander.component'
 
 
 
@@ -63,7 +64,9 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
     ProfileVendorComponent,
     UpdateArticleComponent,
     AllArticleComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    CartComponent,
+    CommanderComponent
   ],
   imports: [
     BrowserModule,

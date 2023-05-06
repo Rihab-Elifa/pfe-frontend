@@ -1,8 +1,8 @@
 <div>
   <h2>Page Details</h2>
   <div class="container"><img class="image" [src]="'data:image/jpeg;base64,'+page2.imageProfile.bytes"></div>
-  <div class="container"><img  [src]="'data:image/jpeg;base64,'+page2.imageCouverture.bytes" class="avatar"></div>
-
+  <div class="container relative"><img  [src]="'data:image/jpeg;base64,'+page2.imageCouverture.bytes" class="avatar"><i class="fa-solid fa-camera" style="color: #ab0af5;"></i></div>
+  
   <p>title:{{page2.title}}</p>
   <p>adresse:{{page2.address}}</p>
   <p>email:{{page2.email}}</p>

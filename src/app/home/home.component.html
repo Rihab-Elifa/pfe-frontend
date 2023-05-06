@@ -25,7 +25,11 @@
         </form>
         <i class="fa-solid fa-heart"></i>
         <a routerLink="/login"><i class="fa-solid fa-user"></i></a>
-        <i class="fa-solid fa-cart-shopping"></i>
+        <a routerLink="cart"><i class="fa-solid fa-cart-shopping">
+          <span class="position-absolute  translate-middle p-2 bg-danger border border-light rounded-circle">
+            <span class="visually-hidden">New alerts</span>
+          </span>
+        </i></a>
 
       </div>
 
@@ -54,7 +58,7 @@
       
      
      
-      <a href="#" class="btn btn-danger"  routerLink="detailP/{{p.id}}">Go somewhere</a>
+      <a  class="btn btn-danger"  (click)="addToCart(p)">Add to cart</a>
     </div>
   </div>
    
@@ -64,8 +68,8 @@
  <h2>Liste du produit</h2>
 
 
-<section class="class">
-  <div class="card" style="width: 18rem;" *ngFor="let p of  article">
+<section class="class1">
+  <div class="card1" style="width: 18rem;" *ngFor="let p of  article">
     <img [src]="'data:image/jpeg;base64,'+p.image.bytes">
     <div class="card-body">
       <p>Name:{{p.nom}}</p>
@@ -73,7 +77,7 @@
       
      
      
-      <a href="#" class="btn btn-danger"  routerLink="detailP/{{p.id}}">Go somewhere</a>
+      <a  class="btn btn-danger"  (click)="addToCart(p)">Add to cart</a>
     </div>
   </div>
    

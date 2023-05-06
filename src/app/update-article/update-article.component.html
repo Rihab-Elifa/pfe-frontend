@@ -1,8 +1,8 @@
 
 <!-- ajout-vente.component.html -->
 <div class="container">
-    <h1>Ajouter une page de vente</h1>
-    <form (ngSubmit)="UpdateArticle()">
+    <h1>Update article</h1>
+    <form  *ngIf=" !isUpdated" (ngSubmit)="UpdateArticle()">
       <div class="form-group">
         <label for="id">ID :</label>
         <input type="text" class="form-control" id="id" [(ngModel)]="article.id" name="id" required>
@@ -31,4 +31,5 @@
       <button type="submit" class="btn btn-danger">Update Article</button>
       <button type="submit" class="btn btn-secondary ">Delete Article</button>
     </form>
+    <div *ngIf=" isUpdated" class="alert alert-primary" role="alert">Article updated successfully</div>
   </div>

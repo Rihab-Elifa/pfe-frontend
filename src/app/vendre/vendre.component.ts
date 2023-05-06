@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { page } from '../Models/page';
 import { VendorServicesService } from '../_services/vendor-services.service';
-import { Activity } from '../Models/Activity';
+import { activityy } from '../Models/activityy';
 import { Region } from '../Models/Region';
 
 @Component({
@@ -18,10 +18,10 @@ export class VendreComponent {
 
   showlocation=false
   id!: string;
-  listeAct= Activity
+  listeAct= activityy
   listRegion= Region;
    
-  listeAct2 = Object.values(Activity);
+  listeAct2 = Object.values(activityy);
   activity:any
   @Input() page:page={
     id: '',
@@ -29,7 +29,7 @@ export class VendreComponent {
     address: '',
     email: '',
     phone: 0,
-    activity: Activity[2],
+    activity: activityy[2],
     postalCode: 0,
     region: Region[3],
     longitude: 0,
@@ -57,7 +57,7 @@ export class VendreComponent {
 
 changeActivity(){
   console.log(this.page.activity)
-if(this.page.activity==="PATISSERIE"||"FOOD"||"MAGAZIN")
+if(this.page.activity==="PATISSERIE"||this.page.activity==="FOOD"||this.page.activity==="MAGAZINE")
 {this.showlocation=true}else{
 this.showlocation=false
 

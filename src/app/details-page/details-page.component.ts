@@ -35,7 +35,18 @@ export class DetailsPageComponent implements OnInit {
       },
       error: (e) => console.error(e)
     });
+    //Edit photo profile 
+    this.vendorServ.editPagephoto(id,this.image).subscribe({
+      next: (data) => {
+        console.log("image update successful")
+        
+ 
+       },
+       error: (e) => console.error(e)
+
+    })
   } 
+
     
   }
   //how get detail page image +data angular 15?

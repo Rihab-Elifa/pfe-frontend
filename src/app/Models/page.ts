@@ -1,4 +1,4 @@
-import { Activity } from "./Activity";
+
 import { Produit } from "./Produit";
 import { Region } from "./Region";
 

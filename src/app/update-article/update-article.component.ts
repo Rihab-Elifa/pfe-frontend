@@ -10,6 +10,7 @@ import { File } from '../Models/File';
   styleUrls: ['./update-article.component.scss']
 })
 export class UpdateArticleComponent {
+  isUpdated=false;
   @Input() article:Article={
     id: '',
     nom: '',
@@ -27,6 +28,7 @@ export class UpdateArticleComponent {
     {
       next:(res)=>{
         console.log('Article updated successfully:', res);
+       this.isUpdated=true;
       },
       error:(e)=>console.error(e)
     }

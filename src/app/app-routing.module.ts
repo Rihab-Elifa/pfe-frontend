@@ -20,6 +20,8 @@ import { ProfileVendorComponent } from './profile-vendor/profile-vendor.componen
 import { UpdateArticleComponent } from './update-article/update-article.component';
 import { AllArticleComponent } from './all-article/all-article.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
+import { CartComponent } from './cart/cart.component';
+import { CommanderComponent } from './commander/commander.component';
 
 
 const routes: Routes = [{path:'register',component:RegisterComponent},
@@ -64,7 +66,9 @@ const routes: Routes = [{path:'register',component:RegisterComponent},
 
 
 {path:'social',component:SocialComponent},
-{path:'home',component:HomeComponent}];
+{path:'home',component:HomeComponent},
+{path:'home/cart',component:CartComponent},
+{path:'home/cart/commander/:p',component:CommanderComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

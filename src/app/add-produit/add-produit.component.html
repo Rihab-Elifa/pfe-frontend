@@ -1,7 +1,7 @@
 
 <!-- ajout-vente.component.html -->
 <div class="container">
-    <h1>Ajouter une page de vente</h1>
+    <h1>Ajouter un Produit</h1>
     <form (ngSubmit)="ajouterProduit()">
       <div class="form-group">
         <label for="id">ID :</label>
@@ -31,7 +31,12 @@
         <label for="image">Image  :</label>
         <input type="file" class="form-control" id="image"  (change)="onProfilImageSelected($event)" name="image">
       </div>
-    
-      <button type="submit" class="btn btn-danger">Ajouter Article</button>
+       <!-- Progress Bar -->
+       <div class="progress form-group" *ngIf="">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="">
+        </div>
+    </div>
+      <button type="submit"   mat-raised-button
+      color="primary" class="btn btn-danger">Ajouter Article</button>
     </form>
   </div>

@@ -7,6 +7,9 @@ import { Produit2 } from '../Models/Produit2';
 import { Produit } from '../Models/Produit';
 import { Article } from '../Models/Article';
 import { Article2 } from '../Models/Article2';
+import { Activity } from '../Models/Activity';
+
+
 const AUTH_API = 'http://localhost:8085/pages/findAllPages';
 const baseURL2 ="http://localhost:8085/api/auth/ListProduit";
 @Injectable({
@@ -25,6 +28,7 @@ export class VendorServicesService {
   private apiUrl9= 'http://localhost:8085/article/ListeArticle';
   private apiUrl10= 'http://localhost:8085/article/findArticlesByPage';
   private apiUrl11= 'http://localhost:8085/article/articlesLocal';
+  private apiUrl12= 'http://localhost:8085/pages/editPage';
 
   
   
@@ -96,6 +100,21 @@ deletePage(iduser:string|null,idPage:string):Observable<any>{
 
 
 }
+//edit photo profile
+editPagephoto(id:string,imageProfile:File):Observable<any>{
+  const formData: FormData = new FormData();
+  if (imageProfile) {
+    formData.append('image', imageProfile);
+  }
+   const headers = new HttpHeaders();
+   headers.append('enctype', 'multipart/form-data'); // Spécifier le type d'encodage du formulaire
+   const options = { headers: headers };
+
+   return this.http.post(`${this.apiUrl12}/${id}`, formData,options);
+
+
+}
+
 //***********************************Gestion Produit */
 //add produit
 ajouterProduit(id: string, pagesDto: Article2, imageProfile: File): Observable<any> {
@@ -123,7 +142,7 @@ updateArticle(article:any): Observable<any>{
 
 //delete Article
 deleteArticle(id:string):Observable<any>{
-  return this.http.delete(`${this.apiUrl7}/${id}`);
+  return this.http.delete(`${this.apiUrl7}/${id}`,{reportProgress: true, observe: 'events'});
 
 
 }
@@ -144,9 +163,9 @@ getAllArticleByPage(id:string|null): Observable<Article[]> {
 }
 
 //get local article 
-getLocal(activity:any,lal:Number,lng:Number):Observable<any>{
-  //const options = { body: activity };
-  return this.http.get<Article[]>(`${this.apiUrl11}/${lal}/${lng}`,activity );
+getLocal(a:Activity,lat:Number,lon:Number):Observable<any>{
+  const options = { headers: a };
+  return this.http.post<Article[]>(`${this.apiUrl11}/${lat}/${lon}`,a);
 }
 
 

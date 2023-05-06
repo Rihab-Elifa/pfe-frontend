@@ -4,7 +4,7 @@ import { UserServiceService } from '../_services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VendorServicesService } from '../_services/vendor-services.service';
 import { Region } from '../Models/Region';
-import { Activity } from '../Models/Activity';
+import { activityy } from '../Models/activityy';
 import { page2 } from '../Models/page2';
 import { File } from '../Models/File';
 
