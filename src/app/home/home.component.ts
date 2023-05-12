@@ -70,6 +70,7 @@ export class HomeComponent  implements OnInit{
   });
   /*********appel fonction ArticleLocal **********/
   //this.localArticle();
+  this.panierSer.loadCart();
   this.products=this.panierSer.getProduct();
   console.log(this.products.length);
   
@@ -78,18 +79,109 @@ export class HomeComponent  implements OnInit{
 //*******Add product to cart  */
 addToCart(product:any){
   console.log(product);
-  if(!this.panierSer.productInCart(product)){
+  let pos=-1
+
+
+let arr1=this.products.filter((element)=>{
+
+  return element.page.id==product.page.id
+})
+
+if(arr1.length>0)
+{
+  let fproduct=this.products.find((v,index)=>{
+return product.id===v.id
+  })
+
+  if(fproduct){
+  this.products.forEach((elem)=>{
+
+    if(elem.id===product.id){
+      elem.quantity+=1
+    }
+  })
+  }else{
+    product.quantity=1
+    this.products.push(product)
+  }
+
+
+
+}else{
+
+  this.products=[]
+  product.quantity=1
+  this.products.push(product)
+}
+/**
+   if(this.products.length===0){
     product.quantity=1;
     this.panierSer.addToCart(product);
-    this.products=[this.panierSer.getAllProducts()];
-   
-  }
     
+
+  }else{
+
+    let exist=false
+  let y=false
+this.products.forEach((element:any,index)=>{
+if(element.page.id===product.page.id && element.id===product.id ){
+ 
+    element.quantity+=1
+  
+   
+  
+  }
+
+if( element.page.id===product.page.id && element.id!=product.id){
+y=true
+}
+
+if(element.page.id!=product.page.id)
+
+{exist=true}
+
+  
+
+
+ 
+
+/*  if(element.nom===product.nom){
+element.quantity+=1
+exist=true
+  }else{
+    product.quantity=1;
+    this.panierSer.addToCart(product);
+    exist=true
+  }
+
 }
 
 
+})
+if(y){
+  product.quantity=1
+ this.products.push(product)
+}
 
+console.log("exist ",exist)
+if(!exist){
+  this.products=[]
+this.panierSer.clearProducts()
+product.quantity=1;
+this.products.push(product)
+
+}
+
+ */
+
+      
+   
+    
+   
   
-  
+  localStorage.setItem('cart_items', JSON.stringify(this.products));
+this.products=[this.panierSer.getProduct()];
+
+}
 
 }

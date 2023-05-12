@@ -57,7 +57,8 @@ export class VendreComponent {
 
 changeActivity(){
   console.log(this.page.activity)
-if(this.page.activity==="PATISSERIE"||this.page.activity==="FOOD"||this.page.activity==="MAGAZINE")
+if(this.page.activity==="PATISSERIE"||this.
+page.activity==="FOOD"||this.page.activity==="MAGAZINE")
 {this.showlocation=true}else{
 this.showlocation=false
 

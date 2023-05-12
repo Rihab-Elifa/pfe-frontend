@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserServiceService } from '../_services/user-service.service';
 import { user } from '../Models/user';
+import { PanierService } from '../_services/panier.service';
+import { Commande } from '../Models/Commande';
+import { CommandeService } from '../_services/commande.service';
 
 @Component({
   selector: 'app-commander',
@@ -9,6 +12,7 @@ import { user } from '../Models/user';
   styleUrls: ['./commander.component.scss']
 })
 export class CommanderComponent implements OnInit {
+  now= new Date();
   user:user={
     id: '',
     email: '',
@@ -18,14 +22,59 @@ export class CommanderComponent implements OnInit {
     phone: null,
     ppg: []
   }
-  constructor(private route:ActivatedRoute,private userServ:UserServiceService){}
+  products:any[]=[];
+  Total!: any;
+  qty:any
+  name:any;
+  somme:any;
+  vendorId:any;
+  vendorT:any;
+  vendorE:any;
+  Commande:Commande={
+  
+    idSender: '',
+    address: '',
+    city: '',
+    streetAddress: '',
+    phone: '',
+    selectedTime: '',
+    description: '',
+    idVendor: '',
+   
+    totalPrice: 0,
+    articles: []
+  }
+  constructor(private route:ActivatedRoute,private userServ:UserServiceService,private panier:PanierService,private CommandeServ:CommandeService){}
 
   ngOnInit(): void {
+    //let id=this.route.snapshot.paramMap.get('p');
+   // console.log(id);
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
       const email = currentUser.email;
 
       this.getUser(email);
+
+      this.panier.loadCart();
+    this.products=this.panier.getProduct();
+
+   /* const index = this.products.findIndex((x: any) => x.id === id);
+    this.qty=this.products[index].quantity;
+    const prix=this.products[index].prix;
+    this.name=this.products[index].nom;
+  
+   
+
     
+    console.log(this.products[index].page.id);
+    console.log(this.products[index].page.title);
+    this.vendorId=this.products[index].page.id;
+    this.vendorT=this.products[index].page.title;
+    this.vendorE=this.products[index].page.email;*/
+
+      this.Total=this.total();
+
+      this.somme=this.total()+10;
+
 
 
 }
@@ -41,4 +90,35 @@ this.userServ.getUserByemail(email)
   error: (e) => console.error(e)
 });
 console.log(this.user.firstName);
-}}
+}
+get total() {
+  return this.products?.reduce(
+    (sum, product) => ({
+      quantity: 1,
+      prix: sum.prix + product.quantity * product.prix,
+    }),
+    { quantity: 1, prix: 0 }
+  ).prix;
+}
+//charger les donner de commande
+modif(){
+  this.Commande.idSender=this.user.id;
+  this.Commande.phone=this.products[0].page.phone;
+  this.Commande.totalPrice=this.total;
+  this.Commande.articles=this.products;
+  this.Commande.idVendor=this.products[0].page.phone;
+  console.log(this.Commande);
+  
+
+
+}
+//confirmer commande 
+Confirmer(){
+  this.CommandeServ.AddCommade(this.Commande).subscribe(resp => {
+        
+    console.log('Commande ajoutée avec succès')
+  });
+
+}
+
+}

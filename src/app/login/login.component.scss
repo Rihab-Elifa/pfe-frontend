@@ -36,3 +36,12 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+
+
+input:focus{
+outline:0;
+border:solid 4px #7149C6;
+
+box-shadow: 2px 2px 4px 3px #8565c98d ;
+}

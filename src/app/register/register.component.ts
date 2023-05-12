@@ -12,11 +12,13 @@ export class RegisterComponent {
     email: null,
     password: null,
     firstName:null,
-    lastName:null
+    lastName:null,
+    phone:null
   };
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  msg='';
 
   constructor(private authService: AuthService) { }
 
@@ -24,13 +26,14 @@ export class RegisterComponent {
   }
 
   onSubmit(): void {
-    const { username, email, password } = this.form;
+    const { firstName,lastName,phone, email, password } = this.form;
 
-    this.authService.register(username, email, password).subscribe({
+    this.authService.register(firstName,lastName,phone, email, password).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.msg=data.message;
       },
       error: err => {
         this.errorMessage = err.error.message;

@@ -9,14 +9,19 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit{
 
-  products: any[] = [];
-  subTotal!: any;
+  products:any[]=[];
+  Total!: any;
 
   constructor(private panier:PanierService,private router:Router){}
   ngOnInit(): void {
     this.panier.loadCart();
     this.products=this.panier.getProduct();
-   
+    console.log(this.products[0].quantity)
+   this.console();
+   this.Total=this.total();
+  }
+  console(){
+    console.log(this.products[0].quantity);
   }
    //Change sub total amount
   // changeSubTotal(product: any, index: any) {
@@ -50,4 +55,12 @@ export class CartComponent implements OnInit{
 
   }
 
+  updateQuantity(product: any) {
+    this.panier.saveCart();
+  
+  }
+
+
+
+  
 }

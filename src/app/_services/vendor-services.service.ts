@@ -101,7 +101,7 @@ deletePage(iduser:string|null,idPage:string):Observable<any>{
 
 }
 //edit photo profile
-editPagephoto(id:string,imageProfile:File):Observable<any>{
+editPagephoto(id:string|null,imageProfile:File):Observable<any>{
   const formData: FormData = new FormData();
   if (imageProfile) {
     formData.append('image', imageProfile);

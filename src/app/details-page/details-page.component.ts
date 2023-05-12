@@ -14,7 +14,8 @@ export class DetailsPageComponent implements OnInit {
  
   article?:Article[];
   page2!:page2;
-  
+  image!:File;
+  b=false;
   constructor(private vendorServ:VendorServicesService,private route:ActivatedRoute){}
   ngOnInit(): void {
     let id=this.route.snapshot.paramMap.get('id');
@@ -35,18 +36,30 @@ export class DetailsPageComponent implements OnInit {
       },
       error: (e) => console.error(e)
     });
-    //Edit photo profile 
+   
+    
+  
+  } 
+  onProfilImageSelected(event: any): void {
+    this.image= event.target.files[0];
+  }
+
+  click(){
+  this.b=true;
+  }
+ //Edit photo profile 
+  changePhoto(id:string):void{
     this.vendorServ.editPagephoto(id,this.image).subscribe({
       next: (data) => {
-        console.log("image update successful")
+        console.log("image update successful");
         
  
        },
        error: (e) => console.error(e)
 
     })
-  } 
 
+   }
     
   }
   //how get detail page image +data angular 15?

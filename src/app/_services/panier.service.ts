@@ -9,7 +9,7 @@ export class PanierService {
   products: any[] = [];
 
   constructor(private http: HttpClient) {}
-
+  //did'nt use because appel list from server
   getAllProducts() {
     return this.http.get('assets/data.json');
   }
@@ -45,6 +45,9 @@ export class PanierService {
   }
 
   clearProducts() {
+    this.products=[]
     localStorage.clear();
   }
+
+  
 }

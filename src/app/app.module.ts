@@ -38,9 +38,11 @@ import { UpdateArticleComponent } from './update-article/update-article.componen
 import { AllArticleComponent } from './all-article/all-article.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { CartComponent } from './cart/cart.component';
-import { CommanderComponent } from './commander/commander.component'
+import { CommanderComponent } from './commander/commander.component';
 
-
+import { AngularFireModule} from '@angular/fire/compat';
+import { AngularFireMessagingModule } from "@angular/fire/compat/messaging";
+import { environment } from 'src/environment';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { CommanderComponent } from './commander/commander.component'
     MatCardModule,
     GoogleMapsModule,
     SocialLoginModule,
-    StorageModule.forRoot({})
+    StorageModule.forRoot({}),
+    AngularFireModule.initializeApp(environment.FirebaseConfig),
+    AngularFireMessagingModule,
     
     
 
