@@ -43,6 +43,7 @@ import { CommanderComponent } from './commander/commander.component';
 import { AngularFireModule} from '@angular/fire/compat';
 import { AngularFireMessagingModule } from "@angular/fire/compat/messaging";
 import { environment } from 'src/environment';
+import { DetailCommandeComponent } from './detail-commande/detail-commande.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { environment } from 'src/environment';
     AllArticleComponent,
     ArticleDetailComponent,
     CartComponent,
-    CommanderComponent
+    CommanderComponent,
+    DetailCommandeComponent
   ],
   imports: [
     BrowserModule,

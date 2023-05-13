@@ -68,7 +68,9 @@ const routes: Routes = [{path:'register',component:RegisterComponent},
 {path:'social',component:SocialComponent},
 {path:'home',component:HomeComponent},
 {path:'home/cart',component:CartComponent},
-{path:'home/cart/commander',component:CommanderComponent}];
+{path:'home/cart/commander',component:CommanderComponent},
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -5,6 +5,8 @@ import { user } from '../Models/user';
 import { PanierService } from '../_services/panier.service';
 import { Commande } from '../Models/Commande';
 import { CommandeService } from '../_services/commande.service';
+import { NotificationService } from '../_services/notification.service';
+import { DeviceDto } from '../Models/DeviceDto';
 
 @Component({
   selector: 'app-commander',
@@ -44,7 +46,8 @@ export class CommanderComponent implements OnInit {
     totalPrice: 0,
     articles: []
   }
-  constructor(private route:ActivatedRoute,private userServ:UserServiceService,private panier:PanierService,private CommandeServ:CommandeService){}
+  DeviceDto!:DeviceDto;
+  constructor(private route:ActivatedRoute,private userServ:UserServiceService,private panier:PanierService,private CommandeServ:CommandeService,private not:NotificationService){}
 
   ngOnInit(): void {
     //let id=this.route.snapshot.paramMap.get('p');
@@ -74,6 +77,10 @@ export class CommanderComponent implements OnInit {
       this.Total=this.total();
 
       this.somme=this.total()+10;
+
+     //add divice pour get notification
+      this.not.addDivce(this.DeviceDto).subscribe();
+
 
 
 
