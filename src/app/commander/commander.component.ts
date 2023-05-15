@@ -113,7 +113,8 @@ modif(){
   this.Commande.phone=this.products[0].page.phone;
   this.Commande.totalPrice=this.total;
   this.Commande.articles=this.products;
-  this.Commande.idVendor=this.products[0].page.phone;
+  //this.Commande.idVendor=this.products[0].page.id;
+  this.Commande.idVendor="6450c633cf32a66dbd78fa08";
   console.log(this.Commande);
   
 
